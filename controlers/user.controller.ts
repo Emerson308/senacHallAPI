@@ -1,10 +1,10 @@
 // // src/controllers/user.controller.ts
 import { Request, Response } from 'express';
-import { get_users } from '../models/user.model'
+import { Users } from '../models/user.model'
 
 export const list_users = async (req: Request, res: Response) => {
   try {
-    const users:any[]|null = await get_users();
+    const users:any[]|null = await Users.getAllUsers();
     if(!users){
         throw new Error('Erro ao buscar usuários')
     }
