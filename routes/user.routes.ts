@@ -1,9 +1,9 @@
 // // src/routes/user.routes.ts
-// import { Router } from 'express';
-// import { getUsers } from '../controlers/user.controller';
+import { Router } from 'express';
+import { list_users } from '../controlers/user.controller';
 
-// const router = Router();
+const router = Router();
 
-// router.get('/', getUsers);
+router.get('/list_users/', list_users);
 
-// export default router;
+export default router;

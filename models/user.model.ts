@@ -1,14 +1,15 @@
 // // src/models/user.model.ts
-// import mongoose, { Schema, Document } from 'mongoose';
+import { error } from "console";
+import { db } from "../config/db.config";
 
-// export interface IUser extends Document {
-//   name: string;
-//   email: string;
-// }
+export const get_users = async (): Promise<any[]|null> => {
+    try {
+        const users = await db`SELECT * FROM Professores`;
+        console.log(users);
+        return users
+    } catch(error: any){
 
-// const UserSchema: Schema = new Schema({
-//   name: { type: String, required: true },
-//   email: { type: String, required: true, unique: true },
-// }, { timestamps: true });
-
-// export default mongoose.model<IUser>('User', UserSchema);
+        console.error('Erro ao buscar usuários erro', error)
+        return null
+    }
+}

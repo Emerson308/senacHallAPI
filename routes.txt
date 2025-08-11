@@ -1,0 +1,72 @@
+ROTAS DE GERENCIAR AGENDAMENTOS
+Get  /api/agendamentos/
+- Requer token, retorna todos os agendamentos de salas da começando pela data atual, o json ficará organizado pela data em ordem crescente
+Get /api/agendamentos/{id}/
+- Requer token e id da sala que quer os agendamentos, retorna todos os agendamentos de uma sala, do começo até o fim, o json separará os agendamentos por mes e ano
+Post  /api/agendamentos/
+- Requer token admin e json com o agendamento que quer criar, deverá enviar um json com todos os dados obrigatórios necessários pra criar um agendamento, e se ele se repete ou não
+Put  /api/agendamentos/{id}/
+- Requer token admin, id do agendamento e json com um agendamento com conteudo novo para editar o antigo
+Put /api/agendamento/
+- Requer token admin e json com um agendamento com conteudo novo para editar o antigo mas sem a data, essa rota deve poder editar muitos agendamentos para um padrão como sala turno e etc..., mas a data dos agendamentos n irá mudar
+(Obs: endpoint não foi completamente planejado ainda)
+Delete  /api/agendamentos{id}/
+- Requer token admin e id do agendamento que quer colocar 
+
+ROTAS DE LOGIN
+Post /api/login/
+- Requer um json com (email ou usuario) e senha de um usuário existente e retorna informações do usuário e token de autenticação
+
+
+ROTAS DE GERENCIAR USUARIOS
+Get /api/accounts/current_user/
+- Requer token do usuário logado
+Get /api/accounts/list_users/
+- Requer token de admin, retorna todos os usuários cadastrados
+Post /api/accounts/user/
+- Requer token de admin e json com informações do novo usuário que quer cadastrar
+Put /api/accounts/user/{id}/
+- Requer token de admin, id do usuário que quer editar e json com as informações atualizadas do usuário que quer editar
+Delete /api/accounts/user/{id}/
+- Requer token de admin e id do usuário que quer excluir
+Post /api/accounts/change_password/
+- Requer token do usuário, json com a nova senha (talvez outro tipo de autenticação) 
+
+ROTAS DE GERENCIAR SALAS
+Post /api/salas/
+- Requer token de admin e json da sala que quer criar, retorna informacoes da sala criada
+Get /api/salas/
+- Requer token, retorna todas as salas cadastradas
+Put /api/salas/{id}/
+- Requer token de admin, id da sala que quer editar, e json da sala editada
+Get /api/salas/{id}/
+- Requer token e id da sala que quer pegar informações detalhadas
+Delete /api/salas/{id}/
+- Requer token de admin e id da sala que quer deletar 
+
+ROTAS DE GERENCIAR PEDIDOS DE INSTRUTORES
+Get /api/pedidos_instrutores/
+- Requer token admin, retorna um json com todos os pedidos de instrutores pedentes de aceitação ou recusa
+Post /api/pedidos_instrutores/
+- Requer token e json do agendamento que quer fazer
+Patch /api/pedidos_instrutores/{id}
+- Requer token de admin e id do pedido do instrutor, é aq onde o admin enviará se aceitou ou recusou o pedido
+(Obs: Endpoint não terminado) 
+
+ROTAS DE BLOQUEIOS DE AGENDAMENTOS
+Post /api/bloqueios_agendamentos/
+- Requer token de admin e json com as datas que quer bloquear, haverá bloqueios de agendamentos unicos (ex: feriados) e bloqueios de agendamentos que se repitirão (ex: sabado e domingo), se o bloquear agendamentos em datas que ja tem agendamento, irá retornar um erro com o json dos agendamentos que tem que editar para outra data ou remover
+Put /api/bloqueios_agendamentos/{id}/
+-  Requer token de admin, id do bloqueio de agendamentos que quer editar e json com o bloqueio de agendamento editado
+Delete /api/bloqueios_agendamentos/{id}/
+- Requer token de admin, id do bloqueio de agendamento que quer deletar
+(Possivel ideia: ter uma salas ou outra coisa q n terá bloqueio de agendamento)
+
+
+
+IDEIAS DE ROTAS FUTURAS:
+Pegar dados de agendamentos e guardar no database
+Pegar agendamentos no database e gerar um excel com todos
+
+
+ N vo poder ir ent ai as rotas q pensei
