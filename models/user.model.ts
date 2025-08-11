@@ -23,6 +23,7 @@ export class Users {
     static async getUsersByCredencials(credenciais: userCredencials){
         try{
             const user = await db`SELECT * FROM Professores WHERE email = ${credenciais.email}`;
+            console.log(user)
             return user[0]
 
         } catch(error){
