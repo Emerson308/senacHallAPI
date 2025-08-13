@@ -1,8 +1,8 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import userRoutes from './routes/user.routes';
-import authRoutes from './routes/auth.routes'
+import userRoutes from './src/routes/user.routes';
+import authRoutes from './src/routes/auth.routes'
 // import { auth } from './middleware/auth.middleware';
 // import errorMiddleware from './middleware/error.middleware';
 // import otherRoutes from './routes/other.routes'; // Exemplo de outras rotas
