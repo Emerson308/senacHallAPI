@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import app from './app'; // Importa a instância do Express configurada
-import {db} from './config/db.config';
+import {db} from './src/config/db.config';
 
 dotenv.config();
 
